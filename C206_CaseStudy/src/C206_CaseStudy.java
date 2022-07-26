@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 //if you see this message it means that you have pulled from nigel case study repo.
+//note, you can reference my work as our jobs are mostly similar -nigel
 	
 	private ArrayList<Account> accountList = new ArrayList<Account>();
 	Account a1 = new Account("jon","buyer","jon@gmail.com","jon123");

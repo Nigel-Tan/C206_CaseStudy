@@ -6,6 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+//note, you can reference my work as our jobs are mostly similar -nigel
+
 public class C206_CaseStudyTest {
 	//setup of fields and arraylist
 	private Account a1;
