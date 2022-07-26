@@ -29,8 +29,25 @@ public class C206_CaseStudyTest {
 
 	@Test
 	public void accountDelete() {
-		//fail("Not yet implemented"); 
-		assertTrue("C206_CaseStudy_SampleTest ",true);
+		// Account list is initially not null
+		assertNotNull(accountList);
+		
+		//Account list has two account
+		C206_CaseStudy.addAccount(accountList, "mary","buyer","mary@gmail.com","mary123");
+		C206_CaseStudy.addAccount(accountList, "jon","buyer","jon@gmail.com","jon123");
+		assertEquals(2,accountList.size());
+		
+		//Given a list with 2 account, after deleting 1 account, test if the size of the list is 1 (delete mary account)
+		C206_CaseStudy.removeAccount(accountList, "mary@gmail.com");
+		assertEquals(1,accountList.size());
+		//test if the expected output string same as the list of accounts retrieved from the store
+		String allAccount= C206_CaseStudy.retrieveAccounts(accountList);
+		String testOutput = String.format("%-20s %-10s %-30s %-20s %-10s\n","jon","buyer","jon@gmail.com","jon123","Active");
+		assertEquals(testOutput, allAccount);
+		
+		//test if email not found, no user is deleted
+		C206_CaseStudy.removeAccount(accountList, "wrongEmail@gmail.com");
+		assertEquals(1,accountList.size());
 	}
 	
 	@Test
@@ -42,7 +59,7 @@ public class C206_CaseStudyTest {
 		//•	the size of the list is 1 
 		//•	The account just added is as same as the first account of the list
 
-		C206_CaseStudy.addAccount(accountList, a1);
+		a1 = C206_CaseStudy.addAccount(accountList, "jon","buyer","jon@gmail.com","jon123");
 		assertEquals(1, accountList.size());
 		assertSame(a1,accountList.get(0));
 		
@@ -50,9 +67,14 @@ public class C206_CaseStudyTest {
 		//•	The size of the list is 2
 		//•	The account just added is as same as the 2nd account of the list
 
-		C206_CaseStudy.addAccount(accountList, a2);
+		a2 = C206_CaseStudy.addAccount(accountList, "mary","buyer","mary@gmail.com","mary123");
 		assertEquals( 2, accountList.size());
-		assertSame("Check that Camcorder is added", a2, accountList.get(1));
+		assertSame(a2, accountList.get(1));
+		
+		//Test that when an account details is invalid, account will not be added.
+		//the name field is left blank
+		C206_CaseStudy.addAccount(accountList, "","buyer","blankName@gmail.com","mary123");
+		assertEquals(2, accountList.size());
 	}
 	
 	@Test
@@ -67,8 +89,8 @@ public class C206_CaseStudyTest {
 		assertEquals(testOutput, allAccount);
 		
 		//Given an empty list, after adding 2 accounts, test if the size of the list is 2
-		C206_CaseStudy.addAccount(accountList, a1);
-		C206_CaseStudy.addAccount(accountList, a2);
+		C206_CaseStudy.addAccount(accountList, "jon","buyer","jon@gmail.com","jon123");
+		C206_CaseStudy.addAccount(accountList, "mary","buyer","mary@gmail.com","mary123");
 		assertEquals(2, accountList.size());
 		
 		//test if the expected output string same as the list of accounts retrieved from the store
