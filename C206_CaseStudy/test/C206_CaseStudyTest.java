@@ -1,23 +1,84 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
-
+	//setup of fields and arraylist
+	private Account a1;
+	private Account a2;
+	private ArrayList<Account> accountList;
+	
 	@Before
 	public void setUp() throws Exception {
+		//details of the objects and arrayList
+		a1 = new Account("jon","buyer","jon@gmail.com","jon123");
+		a2 = new Account("mary","buyer","mary@gmail.com","mary123");
+		accountList = new ArrayList<Account>();
 	}
-
+	
 	@After
 	public void tearDown() throws Exception {
+		//reset data to become null
+		a1 = null;
+		accountList = null;
 	}
 
 	@Test
-	public void c206_test() {
+	public void accountDelete() {
 		//fail("Not yet implemented"); 
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 	}
+	
+	@Test
+	public void accountAdd() {
+		// Test that account list is not null, so that a new account can be added to (boundary)
+		assertNotNull(accountList);
+		
+		//Test that given an empty list, after adding one account (normal), 
+		//•	the size of the list is 1 
+		//•	The account just added is as same as the first account of the list
+
+		C206_CaseStudy.addAccount(accountList, a1);
+		assertEquals(1, accountList.size());
+		assertSame(a1,accountList.get(0));
+		
+		//Test that Add another item. (normal) 
+		//•	The size of the list is 2
+		//•	The account just added is as same as the 2nd account of the list
+
+		C206_CaseStudy.addAccount(accountList, a2);
+		assertEquals( 2, accountList.size());
+		assertSame("Check that Camcorder is added", a2, accountList.get(1));
+	}
+	
+	@Test
+	public void accountView() {
+
+		// Account list is initially not null
+		assertNotNull(accountList);
+		
+		//Test that list is empty
+		String allAccount= C206_CaseStudy.retrieveAccounts(accountList);
+		String testOutput = "";
+		assertEquals(testOutput, allAccount);
+		
+		//Given an empty list, after adding 2 accounts, test if the size of the list is 2
+		C206_CaseStudy.addAccount(accountList, a1);
+		C206_CaseStudy.addAccount(accountList, a2);
+		assertEquals(2, accountList.size());
+		
+		//test if the expected output string same as the list of accounts retrieved from the store
+		allAccount= C206_CaseStudy.retrieveAccounts(accountList);
+		testOutput = String.format("%-20s %-10s %-30s %-20s %-10s\n","jon","buyer","jon@gmail.com","jon123","Active");
+		testOutput += String.format("%-20s %-10s %-30s %-20s %-10s\n","mary","buyer","mary@gmail.com","mary123","Active");
+		assertEquals(testOutput, allAccount);
+	}
+	
+	
+	
 
 }
