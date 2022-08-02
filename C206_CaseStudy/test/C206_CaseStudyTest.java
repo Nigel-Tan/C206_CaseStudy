@@ -128,13 +128,30 @@ public class C206_CaseStudyTest {
 	
 	@Test
 	public void itemView() {
-		//Account List is initially not null
+		// Account list is initially not null
+				assertNotNull(itemList);
+				
+				//Test that list is empty
+				String allItems= C206_CaseStudy.retrieveItems(itemList);
+				String testOutput = "";
+				assertEquals(testOutput, allItems);
+				
+				//Given an empty list, after adding 2 accounts, test if the size of the list is 2
+				C206_CaseStudy.addAccount(accountList, "jon","buyer","jon@gmail.com","jon123");
+				C206_CaseStudy.addAccount(accountList, "mary","buyer","mary@gmail.com","mary123");
+				assertEquals(2, accountList.size());
+				
+				//test if the expected output string same as the list of accounts retrieved from the store
+				allAccount= C206_CaseStudy.retrieveAccounts(accountList);
+				testOutput = String.format("%-20s %-10s %-30s %-20s %-10s\n","jon","buyer","jon@gmail.com","jon123","Active");
+				testOutput += String.format("%-20s %-10s %-30s %-20s %-10s\n","mary","buyer","mary@gmail.com","mary123","Active");
+				assertEquals(testOutput, allAccount);
+			}
+	
+	@Test 
+	public void itemList() {
 		assertNotNull (itemList);
-		
-		// Test that list is empty
-		C206_CaseStudy.additemList(itemList, il);
 		assertEquals(il, itemList.size());
-		
 	}
 
 }
