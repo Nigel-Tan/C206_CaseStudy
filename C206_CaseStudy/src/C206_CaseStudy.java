@@ -8,6 +8,7 @@ public class C206_CaseStudy {
 	Account a1 = new Account("jon","buyer","jon@gmail.com","jon123");
 	Account a2 = new Account("mary","buyer","mary@gmail.com","mary123");
 	
+	private ArrayList<Item> itemList = new ArrayList<Item>(); 
 	
 	private static final int OPTION_BID = 4;
 	private static final int OPTION_ITEM = 3;
@@ -34,6 +35,7 @@ public class C206_CaseStudy {
 
 			}
 			else if (option == OPTION_ITEM) {
+				itemOptions();
 				
 			}
 			else if (option ==OPTION_BID) {
@@ -47,7 +49,7 @@ public class C206_CaseStudy {
 			}
 		}
 	}
-	
+
 	public static void menu() {
 		C206_CaseStudy.setHeader("Campus Online Auction Shop APP");
 		System.out.println("1. Manage Accounts");
@@ -149,18 +151,99 @@ public class C206_CaseStudy {
 		System.out.println("1.View accounts\n2z.Add account\n3.Delete account\n4.Exit");
 		Helper.line(50, "-");
 	}
+	
+	// XAVIER SEAH 21029616
+	private void itemOptionsMenu() {
+		// TODO Auto-generated method stub
+		Helper.line(50, "-");
+		System.out.println("Manage Item options");
+		Helper.line(50, "-");
+		System.out.println("1.Add item\n2.View all items\n3. Delete item based on name\n4.Exit");
+		Helper.line(50, "-");
+	}
+	
+	private void itemOptions() { 
+		int option = 0;
+		itemOptionsMenu();
+		while (option!=4) {
+			option = Helper.readInt("Enter your option > ");
+			if (option == 1) {
+				String name = Helper.readString("Enter Item name > ");
+				String description = Helper.readString("Enter description > ");
+				double bidprice = Helper.readDouble("Enter minimum bid prices > ");
+				String auctionstart = Helper.readString("Enter auction start >");
+				double bidincrement = Helper.readDouble("Enter bid increment > ");
+				Item(itemList,name,description,bidprice,auctionstart, bidincrement);
+			}
+			else if (option ==2) {
+				C206_CaseStudy.setHeader("Item LIST");
+				String output = String.format("%-20s %-10s %-30s %-20s %-10s\n", "Name", "Description",
+						"Minimum bid price", "Auction start","End date");
+				 output += retrieveItems(itemList);	
+				System.out.println(output);
+				
+			}
+			else if (option ==3) {
+				String item = Helper.readString("Enter item to delete account > ");
+				removeItem(itemList,item);
+			}
+			else if (option ==4) {
+				System.out.println("Returning to main menu");
+			}
+			else {
+				System.out.println("Invalid option,returning to main menu.");
+			}
+			break; //after every action in the manage account, they will return to main menu
+		}
+	}
+	private String retrieveItems(ArrayList<Item> itemList2) {
+		String output = "";
+
+		for (int i = 0; i < itemList.size(); i++) {
+
+			output += String.format("%-83s\n",itemList.get(i).display());
+		}
+		return output;
+	}
+
+	private void removeItem(ArrayList<Item> itemList2, String item) {
+		// TODO Auto-generated method stub
+		boolean found = false;
+		for (Item i: itemList2) { 
+			if (i.getName().equalsIgnoreCase(item.strip())) {
+				itemList2.remove(i);
+				found = true;
+				break;
+			}
+		}
+		if (found) { 
+			System.out.println("Item is deleted.");
+		}
+		else {
+			System.out.println("No item can be found with that name!");
+		}
+	}
+
+	private Item Item(ArrayList<Item> itemList2, String name, String description, double bidprice, String auctionstart,
+			double bidincrement) {
+		Item i = null;
+		// TODO Auto-generated method stub
+		if (!(name.isBlank()||description.isBlank()||auctionstart.isBlank())) { 
+			i = new Item (name.strip(),description.strip(),bidincrement, auctionstart.strip(), auctionstart, 0); 
+			itemList.add(i);
+			System.out.println("Item added!");
+		}
+		else {
+			System.out.println("Error with registration details, please ensure all fields are correctly filled!");
+		}
+		return i;
+		
+	}
+
 	// itemsAdd
 	public static void additemList(ArrayList<Item> itemList, Item il) {
 		itemList.add(il);
-	}
 
-//	// itemView
-//	public static String itemView(ArrayList<Item> itemlist) {
-//		String output = "";
-//		
-//		for(int i = 0; i < itemlist.size(); i++) {
-//			
-//		}
 	}
 
 }

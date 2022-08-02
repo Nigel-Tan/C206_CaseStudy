@@ -136,5 +136,11 @@ public class C206_CaseStudyTest {
 		assertEquals(il, itemList.size());
 		
 	}
+	
+	@Test 
+	public void itemList() {
+		assertNotNull (itemList);
+		assertEquals(il, itemList.size());
+	}
 
 }
