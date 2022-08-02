@@ -129,10 +129,10 @@ public class C206_CaseStudyTest {
 	@Test
 	public void itemView() {
 		// Account list is initially not null
-				assertNotNull(Item.itemView());
+				assertNotNull(itemList);
 				
 				//Test that list is empty
-				String allItems= Item.itemView();
+				String allItems= "";
 				String testOutput = "";
 				assertEquals("Check that viewAll", testOutput, allItems);
 				
