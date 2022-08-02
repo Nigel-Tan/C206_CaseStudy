@@ -240,21 +240,6 @@ public class C206_CaseStudy {
 		
 	}
 
-	// itemsAdd
-	public static void additemList(ArrayList<Item> itemList, Item il) {
-		itemList.add(il);
 
-<<<<<<< HEAD
-//	// itemView
-//	public static String itemView(ArrayList<Item> itemlist) {
-//		String output = "";
-//		
-//		for(int i = 0; i < itemlist.size(); i++) {
-//			
-//		}
-//	}
-=======
-	}
->>>>>>> branch 'master' of https://github.com/21023028-NigelTanMengYuan/C206_CaseStudy.git
 
 }
