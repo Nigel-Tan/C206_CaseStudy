@@ -142,10 +142,10 @@ public class C206_CaseStudyTest {
 				assertEquals(2, accountList.size());
 				
 				//test if the expected output string same as the list of accounts retrieved from the store
-				allAccount= C206_CaseStudy.retrieveAccounts(accountList);
+				allItems= C206_CaseStudy.retrieveAccounts(accountList);
 				testOutput = String.format("%-20s %-10s %-30s %-20s %-10s\n","jon","buyer","jon@gmail.com","jon123","Active");
 				testOutput += String.format("%-20s %-10s %-30s %-20s %-10s\n","mary","buyer","mary@gmail.com","mary123","Active");
-				assertEquals(testOutput, allAccount);
+				assertEquals(testOutput, allItems);
 			}
 	
 	@Test 
