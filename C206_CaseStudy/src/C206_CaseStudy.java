@@ -146,7 +146,7 @@ public class C206_CaseStudy {
 		Helper.line(50, "-");
 		System.out.println("Manage account options");
 		Helper.line(50, "-");
-		System.out.println("1.View accounts\n2z.Add account\n3.Delete account\n4.Exit");
+		System.out.println("1.View accounts\n2.Add account\n3.Delete account\n4.Exit");
 		Helper.line(50, "-");
 	}
 	// itemsAdd
@@ -161,6 +161,6 @@ public class C206_CaseStudy {
 //		for(int i = 0; i < itemlist.size(); i++) {
 //			
 //		}
-	}
+//	}
 
 }
