@@ -42,7 +42,8 @@ public class Item {
 	}
 
 	public String display() {
-		String output = String.format("%-20s %-10s %-30s %-20s %-10s",name,description,minimumbidprice,auctionstart,enddate);
+		String output = String.format("%-20s %-10s %-30s %-20s %-10s", name, description, minimumbidprice, auctionstart,
+				enddate);
 		return output;
 	}
 
