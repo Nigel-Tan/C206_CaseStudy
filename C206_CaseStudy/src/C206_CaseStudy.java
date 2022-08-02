@@ -116,7 +116,7 @@ public class C206_CaseStudy {
 			System.out.println("No user can be found with that email!");
 		}
 	}
-	private void accountOptions() {
+	public void accountOptions() {
 		int option = 0;
 		accountOptionMenu();
 		while (option!=4) {
@@ -144,7 +144,7 @@ public class C206_CaseStudy {
 			break; //after every action in the manage account, they will return to main menu
 		}
 	}
-	private void accountOptionMenu() {
+	public void accountOptionMenu() {
 		Helper.line(50, "-");
 		System.out.println("Manage account options");
 		Helper.line(50, "-");
@@ -162,7 +162,7 @@ public class C206_CaseStudy {
 		Helper.line(50, "-");
 	}
 	
-	private void itemOptions() { 
+	public void itemOptions() { 
 		int option = 0;
 		itemOptionsMenu();
 		while (option!=4) {
@@ -196,17 +196,17 @@ public class C206_CaseStudy {
 			break; //after every action in the manage account, they will return to main menu
 		}
 	}
-	private String retrieveItems(ArrayList<Item> itemList2) {
+	public static String retrieveItems(ArrayList<Item> itemList2) {
 		String output = "";
 
-		for (int i = 0; i < itemList.size(); i++) {
+		for (int i = 0; i < itemList2.size(); i++) {
 
-			output += String.format("%-83s\n",itemList.get(i).display());
+			output += String.format("%-83s\n",itemList2.get(i).display());
 		}
 		return output;
 	}
 
-	private void removeItem(ArrayList<Item> itemList2, String item) {
+	public void removeItem(ArrayList<Item> itemList2, String item) {
 		// TODO Auto-generated method stub
 		boolean found = false;
 		for (Item i: itemList2) { 
@@ -224,7 +224,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	private Item Item(ArrayList<Item> itemList2, String name, String description, double bidprice, String auctionstart,
+	public Item Item(ArrayList<Item> itemList2, String name, String description, double bidprice, String auctionstart,
 			double bidincrement) {
 		Item i = null;
 		// TODO Auto-generated method stub
