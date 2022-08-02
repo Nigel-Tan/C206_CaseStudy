@@ -148,7 +148,7 @@ public class C206_CaseStudy {
 		Helper.line(50, "-");
 		System.out.println("Manage account options");
 		Helper.line(50, "-");
-		System.out.println("1.View accounts\n2z.Add account\n3.Delete account\n4.Exit");
+		System.out.println("1.View accounts\n2.Add account\n3.Delete account\n4.Exit");
 		Helper.line(50, "-");
 	}
 	
@@ -244,6 +244,17 @@ public class C206_CaseStudy {
 	public static void additemList(ArrayList<Item> itemList, Item il) {
 		itemList.add(il);
 
+<<<<<<< HEAD
+//	// itemView
+//	public static String itemView(ArrayList<Item> itemlist) {
+//		String output = "";
+//		
+//		for(int i = 0; i < itemlist.size(); i++) {
+//			
+//		}
+//	}
+=======
 	}
+>>>>>>> branch 'master' of https://github.com/21023028-NigelTanMengYuan/C206_CaseStudy.git
 
 }
