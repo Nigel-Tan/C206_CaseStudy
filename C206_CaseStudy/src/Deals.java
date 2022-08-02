@@ -5,16 +5,14 @@ public class Deals {
 	private String seller_email;
 	private String buyer_email;
 	private Double transaction_price;
-	private String close_date;
 	private String status;
 
-	public Deals(String deal_id, String item_name, String seller_email, String buyer_email, Double transaction_price, String close_date) {
+	public Deals(String deal_id, String item_name, String seller_email, String buyer_email, Double transaction_price) {
 		this.deal_id = deal_id;
 		this.item_name = item_name;
 		this.seller_email = seller_email;
 		this.buyer_email = buyer_email;
 		this.transaction_price = transaction_price;
-		this.close_date = close_date;
 		status = "Active";
 	}
 
@@ -42,13 +40,11 @@ public class Deals {
 		return transaction_price;
 	}
 	
-	public String getClose_date() {
-		return close_date;
-	}
+	
 
 	public String display() {
 		String output = String.format("%-20s %-10s %-30s %-20s %-10s", deal_id, item_name, seller_email, buyer_email,
-				transaction_price, close_date, status);
+				transaction_price, status);
 		return output;
 	}
 }

@@ -41,6 +41,7 @@ public class C206_CaseStudy {
 			} else if (option == OPTION_BID) {
 
 			} else if (option == OPTION_DEAL) {
+				dealsOptions();
 
 			} else if (option == OPTION_QUIT) {
 
@@ -116,7 +117,8 @@ public class C206_CaseStudy {
 		}
 	}
 
-	private void accountOptions() {
+	public void accountOptions() {
+
 		int option = 0;
 		accountOptionMenu();
 		while (option != 4) {
@@ -141,7 +143,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	private void accountOptionMenu() {
+	public void accountOptionMenu() {
 		Helper.line(50, "-");
 		System.out.println("Manage account options");
 		Helper.line(50, "-");
@@ -159,7 +161,8 @@ public class C206_CaseStudy {
 		Helper.line(50, "-");
 	}
 
-	private void itemOptions() {
+	public void itemOptions() {
+
 		int option = 0;
 		itemOptionsMenu();
 		while (option != 4) {
@@ -190,17 +193,18 @@ public class C206_CaseStudy {
 		}
 	}
 
-	private String retrieveItems(ArrayList<Item> itemList2) {
+	public static String retrieveItems(ArrayList<Item> itemList2) {
+
 		String output = "";
 
-		for (int i = 0; i < itemList.size(); i++) {
+		for (int i = 0; i < itemList2.size(); i++) {
+			output += String.format("%-83s\n", itemList2.get(i).display());
 
-			output += String.format("%-83s\n", itemList.get(i).display());
 		}
 		return output;
 	}
 
-	private void removeItem(ArrayList<Item> itemList2, String item) {
+	public void removeItem(ArrayList<Item> itemList2, String item) {
 		// TODO Auto-generated method stub
 		boolean found = false;
 		for (Item i : itemList2) {
@@ -217,7 +221,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	private Item Item(ArrayList<Item> itemList2, String name, String description, double bidprice, String auctionstart,
+	public Item Item(ArrayList<Item> itemList2, String name, String description, double bidprice, String auctionstart,
 			double bidincrement) {
 		Item i = null;
 		// TODO Auto-generated method stub
@@ -232,12 +236,6 @@ public class C206_CaseStudy {
 
 	}
 
-	// itemsAdd
-	public static void additemList(ArrayList<Item> itemList, Item il) {
-		itemList.add(il);
-
-	}
-
 	// Deals LIMPEH DO ONE
 	private void dealsOptionsMenu() {
 		// TODO Auto-generated method stub
@@ -249,12 +247,10 @@ public class C206_CaseStudy {
 	}
 
 	public static Deals addDeals(ArrayList<Deals> dealsList, String deal_id, String item_name, String seller_email,
-			String buyer_email, Double transaction_price, String close_date) { // add account (Hirthik)
+			String buyer_email, Double transaction_price) { // add account (Hirthik)
 		Deals d = null;
-		if (!(deal_id.isBlank() || item_name.isBlank() || seller_email.isBlank() || buyer_email.isBlank()
-				|| close_date.isBlank())) { // check that input is not empty
-			d = new Deals(deal_id.strip(), item_name.strip(), seller_email.strip(), buyer_email.strip(),
-					transaction_price, close_date.strip());
+		if (!(deal_id.isBlank() || item_name.isBlank() || seller_email.isBlank() || buyer_email.isBlank())) { 
+			d = new Deals(deal_id.strip(), item_name.strip(), seller_email.strip(), buyer_email.strip(), transaction_price);
 			dealsList.add(d);
 			System.out.println("Deal added!");
 		} else {
@@ -275,13 +271,14 @@ public class C206_CaseStudy {
 			option = Helper.readInt("Enter your option > ");
 			if (option == 1) {
 				String deal_id = Helper.readString("Enter Deal ID > ");
-				String item_name = Helper.readString("Enter Item ID > ");
+				String item_name = Helper.readString("Enter Item name > ");
 				double transaction_price = Helper.readDouble("Enter Transaction price > ");
 				String seller_email = Helper.readString("Enter Seller email >");
 				String buyer_email = Helper.readString("Enter buyer email > ");
+				addDeals(dealsList, deal_id, item_name, seller_email, buyer_email, transaction_price);
 			} else if (option == 2) {
 				C206_CaseStudy.setHeader("Deal LIST");
-				String output = String.format("%-20s %-10s %-30s %-20s %-10s\n", "Deal ID", "Item name", "Seller email",
+				String output = String.format("%-10s %-10s %-10s %-10s %-10s\n", "Deal ID", "Item name", "Seller email",
 						"Buyer email", "Transaction Price");
 				output += retrieveDeals(dealsList);
 				System.out.println(output);
@@ -298,12 +295,14 @@ public class C206_CaseStudy {
 		}
 	}
 
-	private void removeDeals(ArrayList<Deals> dealsList1, String deal_id) {
+	
+
+	private void removeDeals(ArrayList<Deals> dealsList, String deal_id) {
 		// TODO Auto-generated method stub
 		boolean found = false;
-		for (Deals i : dealsList1) {
+		for (Deals i : dealsList) {
 			if (i.getDeal_id().equalsIgnoreCase(deal_id)) {
-				dealsList1.remove(i);
+				dealsList.remove(i);
 				found = true;
 				break;
 			}
@@ -315,7 +314,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	private String retrieveDeals(ArrayList<Deals> dealsList1) {
+	private String retrieveDeals(ArrayList<Deals> dealsList) {
 		String output = "";
 
 		for (int i = 0; i < dealsList.size(); i++) {
