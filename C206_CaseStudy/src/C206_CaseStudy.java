@@ -120,7 +120,6 @@ public class C206_CaseStudy {
 		}
 	}
 
-
 	private void accountOptions() {
 		int option = 0;
 		accountOptionMenu();
@@ -145,7 +144,6 @@ public class C206_CaseStudy {
 			break; // after every action in the manage account, they will return to main menu
 		}
 	}
-
 
 	public void accountOptionMenu() {
 		Helper.line(50, "-");
@@ -240,16 +238,13 @@ public class C206_CaseStudy {
 		}
 		return i;
 
-
 	}
 
 	// itemsAdd
 	public static void additemList(ArrayList<Item> itemList, Item il) {
 		itemList.add(il);
 
-
 	}
-
 
 	// NG KAI TING 21010191
 	private void categoryOptionMenu() {
@@ -261,38 +256,37 @@ public class C206_CaseStudy {
 		Helper.line(50, "-");
 	}
 
-	private void categoryOption() { 
+	private void categoryOption() {
 		int option = 0;
 		categoryOptionMenu();
-		
-		while (option!=4) {
+
+		while (option != 4) {
 			option = Helper.readInt("Enter your option > ");
-			
+
 			if (option == 1) {
 				String name = Helper.readString("Enter name > ");
-				categoryAdd(categoryList,name);
+				categoryAdd(categoryList, name);
 			}
-			
-			else if (option ==2) {
+
+			else if (option == 2) {
 				C206_CaseStudy.setHeader("Category LIST");
 				String output = String.format("%-20s\n", "Name");
-				 output += retrieveCategory(categoryList);	
+				output += retrieveCategory(categoryList);
 				System.out.println(output);
-				
+
 			} else if (option == 3) {
 				String Category = Helper.readString("Enter category to delete account > ");
 				removeCategory(categoryList, Category);
-				
+
 			} else if (option == 4) {
 				System.out.println("Returning to main menu");
-				
+
 			} else {
 				System.out.println("Invalid option,returning to main menu.");
 			}
 			break; // after every action in the manage account, they will return to main menu
 		}
 	}
-
 
 	private Category categoryAdd(ArrayList<Category> categoryList2, String name) {
 		// TODO Auto-generated method stub
@@ -309,7 +303,6 @@ public class C206_CaseStudy {
 
 	}
 
-
 	private void removeCategory(ArrayList<Category> categoryList2, String category) {
 		boolean found = false;
 		for (Category i : categoryList2) {
@@ -325,7 +318,6 @@ public class C206_CaseStudy {
 			System.out.println("No item can be found with that name!");
 		}
 	}
-		
 
 	private String retrieveCategory(ArrayList<Category> categoryList2) {
 		// TODO Auto-generated method stub
@@ -336,7 +328,7 @@ public class C206_CaseStudy {
 			output += String.format("%-83s\n", categoryList2.get(i).display());
 		}
 		return output;
-	
+
 	}
 
 	// Deals LIMPEH DO ONE
@@ -352,8 +344,9 @@ public class C206_CaseStudy {
 	public static Deals addDeals(ArrayList<Deals> dealsList, String deal_id, String item_name, String seller_email,
 			String buyer_email, Double transaction_price) { // add account (Hirthik)
 		Deals d = null;
-		if (!(deal_id.isBlank() || item_name.isBlank() || seller_email.isBlank() || buyer_email.isBlank())) { 
-			d = new Deals(deal_id.strip(), item_name.strip(), seller_email.strip(), buyer_email.strip(), transaction_price);
+		if (!(deal_id.isBlank() || item_name.isBlank() || seller_email.isBlank() || buyer_email.isBlank())) {
+			d = new Deals(deal_id.strip(), item_name.strip(), seller_email.strip(), buyer_email.strip(),
+					transaction_price);
 			dealsList.add(d);
 			System.out.println("Deal added!");
 		} else {
@@ -381,7 +374,7 @@ public class C206_CaseStudy {
 				addDeals(dealsList, deal_id, item_name, seller_email, buyer_email, transaction_price);
 			} else if (option == 2) {
 				C206_CaseStudy.setHeader("Deal LIST");
-				String output = String.format("%-10s %-10s %-10s %-10s %-10s\n", "Deal ID", "Item name", "Seller email",
+				String output = String.format("%-20s %-10s %-10s %-10s %-10s\n", "Deal ID", "Item name", "Seller email",
 						"Buyer email", "Transaction Price");
 				output += retrieveDeals(dealsList);
 				System.out.println(output);
@@ -397,8 +390,6 @@ public class C206_CaseStudy {
 			break; // after every action in the manage account, they will return to main menu
 		}
 	}
-
-	
 
 	private void removeDeals(ArrayList<Deals> dealsList, String deal_id) {
 		// TODO Auto-generated method stub
