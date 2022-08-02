@@ -9,7 +9,8 @@ public class C206_CaseStudy {
 	Account a2 = new Account("mary", "buyer", "mary@gmail.com", "mary123");
 
 	private ArrayList<Item> itemList = new ArrayList<Item>();
-
+	private ArrayList<Deals> dealsList = new ArrayList<Deals>();
+	
 	private ArrayList<Category> categoryList = new ArrayList<Category>();
 
 	private static final int OPTION_BID = 4;
