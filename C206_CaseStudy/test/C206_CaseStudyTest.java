@@ -12,14 +12,20 @@ public class C206_CaseStudyTest {
 	//setup of fields and arraylist
 	private Account a1;
 	private Account a2;
+	private Item il;
+	private Item il2;
 	private ArrayList<Account> accountList;
-	
+	private ArrayList<Item> itemList; 
+
 	@Before
 	public void setUp() throws Exception {
 		//details of the objects and arrayList
 		a1 = new Account("jon","buyer","jon@gmail.com","jon123");
 		a2 = new Account("mary","buyer","mary@gmail.com","mary123");
 		accountList = new ArrayList<Account>();
+		itemList = new ArrayList<Item>();
+		il = new Item ("ruler", "long long", 0.66 , "1 August 2022", "8 August 2022", 1.00);
+		il2 = new Item ("rubber", "pull and push", 1.00, "3 August 2022", "24 August 2022", 2.00);
 	}
 	
 	@After
@@ -103,6 +109,32 @@ public class C206_CaseStudyTest {
 	}
 	
 	
+	@Test
+	public void itemAdd() {
+		// Account list is initially not null
+		assertNotNull(itemList);
+		
+		//Test that list is empty
+		C206_CaseStudy.additemList(itemList, il);
+		assertEquals(1, itemList.size());
+		assertSame(il, itemList.get(0));
+		
+		// test that add another item
+		C206_CaseStudy.additemList(itemList, il2);
+		assertEquals(2, itemList.size());
+		assertSame(il2, itemList.get(1));
+		
+	}
 	
+	@Test
+	public void itemView() {
+		//Account List is initially not null
+		assertNotNull (itemList);
+		
+		// Test that list is empty
+		C206_CaseStudy.additemList(itemList, il);
+		assertEquals(il, itemList.size());
+		
+	}
 
 }
