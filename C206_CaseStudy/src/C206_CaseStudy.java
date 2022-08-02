@@ -298,9 +298,21 @@ public class C206_CaseStudy {
 		}
 	}
 
-	private void removeDeals(ArrayList<Deals> dealsList2, String deal_id) {
+	private void removeDeals(ArrayList<Deals> dealsList1, String deal_id) {
 		// TODO Auto-generated method stub
-		
+		boolean found = false;
+		for (Deals i : dealsList1) {
+			if (i.getDeal_id().equalsIgnoreCase(deal_id)) {
+				dealsList1.remove(i);
+				found = true;
+				break;
+			}
+		}
+		if (found) {
+			System.out.println("Deal is deleted.");
+		} else {
+			System.out.println("No Deal can be found with that Deal ID!");
+		}
 	}
 
 	private String retrieveDeals(ArrayList<Deals> dealsList1) {
