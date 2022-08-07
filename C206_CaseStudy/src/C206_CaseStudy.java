@@ -447,11 +447,11 @@ private void bidOptions() {
 			C206_CaseStudy.setHeader("bid LIST");
 			String output = String.format("%-20s %-10s %-30s %-20s %-10s\n", "Bid id", "Item name",
 					"Seller email", "Buyer email", "Bid price");
-			output += retrievebid(bidList);
+			output += Bid(bidList);
 			System.out.println(output);
 
 		} else if (option == 3) {
-			String item = Helper.readString("Enter bid id to delete bid > ");
+			String bid = Helper.readString("Enter bid id to delete bid > ");
 			removeBid(bidList, bid);
 		} else if (option == 4) {
 			System.out.println("Returning to main menu");
