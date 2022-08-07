@@ -458,16 +458,18 @@ private void bidOptions() {
 		break; // after every action in the manage account, they will return to main menu
 	}
 }
-		public static void addBid(ArrayList<Bid> bidList, String bid_id, String item_name, String seller_email,
+		public static Bid addBid(ArrayList<Bid> bidList, String bid_id, String item_name, String seller_email,
 				String buyer_email, double bid_price) { // add account
-			Bid f = null;
+			Bid f = new Bid (bid_id, item_name, seller_email, buyer_email, bid_price);
 			if (!(bid_id.isBlank() || item_name.isBlank() || seller_email.isBlank() || buyer_email.isBlank())) { // check that input is not
-				f = new Bid (bid_id, item_name, seller_email, buyer_email, bid_price);																			// empty
+																						// empty
 				bidList.add(f);
 				System.out.println("bid added!");
+				
 			} else {
 				System.out.println("Error with bid details, please double check your fields!");
 			}
+			return f;
 
 		}
 
