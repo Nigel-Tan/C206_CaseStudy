@@ -485,7 +485,7 @@ private void bidOptions() {
 
 		public static void viewAllBids(ArrayList<Bid> bidList) { // final view output 
 			C206_CaseStudy.setHeader("Bid LIST");
-			String output = String.format("%-20s %-10s %-30s %-20s %-10.2f","bid_id","item_name","seller_email","buyer_email","bid_price");
+			String output = String.format("%-20s %-10s %-30s %-20s %-10s","bid_id","item_name","seller_email","buyer_email","bid_price");
 			output += retrieveBids(bidList);
 			System.out.println(output);
 		}
