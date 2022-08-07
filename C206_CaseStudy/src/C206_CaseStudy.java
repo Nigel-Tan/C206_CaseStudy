@@ -289,7 +289,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	private Category categoryAdd(ArrayList<Category> categoryList2, String name) {
+	static Category categoryAdd(ArrayList<Category> categoryList2, String name) {
 		// TODO Auto-generated method stub
 		Category i = null;
 		// TODO Auto-generated method stub
@@ -304,7 +304,7 @@ public class C206_CaseStudy {
 
 	}
 
-	private void removeCategory(ArrayList<Category> categoryList2, String category) {
+	public static void removeCategory(ArrayList<Category> categoryList2, String category) {
 		boolean found = false;
 		for (Category i : categoryList2) {
 			if (i.getCategory().equalsIgnoreCase(category.strip())) {
@@ -320,7 +320,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	private String retrieveCategory(ArrayList<Category> categoryList2) {
+	public static String retrieveCategory(ArrayList<Category> categoryList2) {
 		// TODO Auto-generated method stub
 		String output = "";
 
