@@ -42,6 +42,10 @@ public class Bid {
 	public void setBid_price(double bid_price) {
 		this.bid_price = bid_price;
 	}
+	public String display() {
+		String output = String.format("%-20s %-10s %-30s %-20s %-10.2f",bid_id,item_name,seller_email,buyer_email,bid_price);
+		return output;
 
 
+	}
 }

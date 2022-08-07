@@ -43,6 +43,7 @@ public class C206_CaseStudy {
 				itemOptions();
 
 			} else if (option == OPTION_BID) {
+				bidOptions();
 
 			} else if (option == OPTION_DEAL) {
 				dealsOptions();
@@ -289,7 +290,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	private Category categoryAdd(ArrayList<Category> categoryList2, String name) {
+	static Category categoryAdd(ArrayList<Category> categoryList2, String name) {
 		// TODO Auto-generated method stub
 		Category i = null;
 		// TODO Auto-generated method stub
@@ -304,7 +305,7 @@ public class C206_CaseStudy {
 
 	}
 
-	private void removeCategory(ArrayList<Category> categoryList2, String category) {
+	public static void removeCategory(ArrayList<Category> categoryList2, String category) {
 		boolean found = false;
 		for (Category i : categoryList2) {
 			if (i.getCategory().equalsIgnoreCase(category.strip())) {
@@ -320,7 +321,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	private String retrieveCategory(ArrayList<Category> categoryList2) {
+	public static String retrieveCategory(ArrayList<Category> categoryList2) {
 		// TODO Auto-generated method stub
 		String output = "";
 
@@ -444,15 +445,11 @@ private void bidOptions() {
 			double bid_price = Helper.readDouble("Enter bid price > ");	
 			addBid(bidList, bid_id, item_name, seller_email, buyer_email, bid_price);
 		} else if (option == 2) {
-			C206_CaseStudy.setHeader("bid LIST");
-			String output = String.format("%-20s %-10s %-30s %-20s %-10s\n", "Bid id", "Item name",
-					"Seller email", "Buyer email", "Bid price");
-			output += Bid(bidList);
-			System.out.println(output);
+			viewAllBids(bidList);
 
 		} else if (option == 3) {
 			String bid = Helper.readString("Enter bid id to delete bid > ");
-			removeBid(bidList, bid);
+			deleteBid(bidList, bid);
 		} else if (option == 4) {
 			System.out.println("Returning to main menu");
 		} else {
@@ -461,17 +458,16 @@ private void bidOptions() {
 		break; // after every action in the manage account, they will return to main menu
 	}
 }
-		public static Bid addBid(ArrayList<Bid> bidList, String bid_id, String item_name, String seller_email,
+		public static void addBid(ArrayList<Bid> bidList, String bid_id, String item_name, String seller_email,
 				String buyer_email, double bid_price) { // add account
 			Bid f = null;
-			if (!(bid_id.isBlank() || item_name.isBlank() || seller_email.isBlank() || buyer_email.isBlank() || bid_price.isBlank())) { // check that input is not
-																								// empty
+			if (!(bid_id.isBlank() || item_name.isBlank() || seller_email.isBlank() || buyer_email.isBlank())) { // check that input is not
+				f = new Bid (bid_id, item_name, seller_email, buyer_email, bid_price);																			// empty
 				bidList.add(f);
 				System.out.println("bid added!");
 			} else {
 				System.out.println("Error with bid details, please double check your fields!");
 			}
-			return f;
 
 		}
 
@@ -485,17 +481,17 @@ private void bidOptions() {
 			return output;
 		}
 
-		public static void viewAllBids(ArrayList<bid> bidList) { // final view output 
+		public static void viewAllBids(ArrayList<Bid> bidList) { // final view output 
 			C206_CaseStudy.setHeader("Bid LIST");
-			String output = String.format("%-20s %-10s %-30s %-20s %-10s\n", "Name", "Role", "Email", "Password", "Status");
-			output += retrieveAccounts(accountList);
+			String output = String.format("%-20s %-10s %-30s %-20s %-10.2f","bid_id","item_name","seller_email","buyer_email","bid_price");
+			output += retrieveBids(bidList);
 			System.out.println(output);
 		}
 
 		public static void deleteBid(ArrayList<Bid> bidList, String bid_id) { // remove account
 			boolean found = false;
 			for (Bid f : bidList) { // loop to find the email if it exist
-				if (f.getBid().equalsIgnoreCase(bid_id.strip())) {
+				if (f.getBid_id().equalsIgnoreCase(bid_id.strip())) {
 					bidList.remove(f);
 					found = true;
 					break;
