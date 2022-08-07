@@ -16,6 +16,9 @@ public class C206_CaseStudyTest {
 	private Item il2;
 	private ArrayList<Account> accountList;
 	private ArrayList<Item> itemList; 
+	private Bid b1;
+	private Bid b2;
+	private ArrayList<Bid> bidList;
 
 	@Before
 	public void setUp() throws Exception {
@@ -26,6 +29,8 @@ public class C206_CaseStudyTest {
 		itemList = new ArrayList<Item>();
 		il = new Item ("ruler", "long long", 0.66 , "1 August 2022", "8 August 2022", 1.00);
 		il2 = new Item ("rubber", "pull and push", 1.00, "3 August 2022", "24 August 2022", 2.00);
+		b1 = new Bid("2100", "ruler", "max210@gmail.com", "pete129@gmail.com", 30.00);
+		b2 = new Bid("2101", "spoon", "liu3921@gmail.com", "tim213@gmail.com", 50.00);
 	}
 	
 	@After
@@ -152,3 +157,4 @@ public class C206_CaseStudyTest {
 	}
 
 }
+
