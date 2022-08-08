@@ -270,18 +270,17 @@ public class C206_CaseStudyTest {
 		// Test that given an empty list, after adding one bid (normal),
 		// • the size of the list is 1
 		// • The bid just added is as same as the first bid of the list
-		b2 = C206_CaseStudy.addBid(bidList, "2100", "ruler", "max210@gmail.com", "pete129@gmail.com", 30.00);
+		b1 = C206_CaseStudy.addBid(bidList, "2100", "ruler", "max210@gmail.com", "pete129@gmail.com", 30.00);
 		assertEquals(1, bidList.size());
-		assertSame(b2, bidList.get(0));
+		assertSame(b1, bidList.get(0));
 
 		// Test that Add another bid. (normal)
 		// • The size of the list is 2
 		// • The bid just added is as same as the 2nd bid of the list
 
 		b2 = C206_CaseStudy.addBid(bidList, "2101", "spoon", "liu3921@gmail.com", "tim213@gmail.com", 50.00);
-
-		assertEquals(2, accountList.size());
-		assertSame(a2, accountList.get(1));
+		assertEquals(2, bidList.size());
+		assertSame(b2, bidList.get(1));
 	}
 		
 
@@ -314,7 +313,8 @@ public class C206_CaseStudyTest {
 
 		// Test that list is empty
 		String allbid = C206_CaseStudy.retrieveBids(bidList);
-		assertEquals(bidList, bidList.size());
+		String testOutput = "";
+		assertEquals(testOutput, allbid);
 
 		// Given an empty list, after adding 2 accounts, test if the size of the list is
 		// 2

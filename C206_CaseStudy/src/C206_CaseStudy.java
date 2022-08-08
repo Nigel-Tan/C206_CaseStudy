@@ -458,20 +458,22 @@ private void bidOptions() {
 		break; // after every action in the manage account, they will return to main menu
 	}
 }
-		public static void addBid(ArrayList<Bid> bidList, String bid_id, String item_name, String seller_email,
-				String buyer_email, double bid_price) { // add account
-			Bid f = null;
+		public static Bid addBid(ArrayList<Bid> bidList, String bid_id, String item_name, String seller_email,
+				String buyer_email, double bid_price) { // add bid
+			Bid f = new Bid (bid_id, item_name, seller_email, buyer_email, bid_price);
 			if (!(bid_id.isBlank() || item_name.isBlank() || seller_email.isBlank() || buyer_email.isBlank())) { // check that input is not
-				f = new Bid (bid_id, item_name, seller_email, buyer_email, bid_price);																			// empty
+																						// empty
 				bidList.add(f);
 				System.out.println("bid added!");
+				
 			} else {
 				System.out.println("Error with bid details, please double check your fields!");
 			}
+			return f;
 
 		}
 
-		public static String retrieveBids(ArrayList<Bid> bidList) { // retrieve list of account (nigel)
+		public static String retrieveBids(ArrayList<Bid> bidList) { // retrieve list of bid
 			String output = "";
 
 			for (int i = 0; i < bidList.size(); i++) {
@@ -483,12 +485,12 @@ private void bidOptions() {
 
 		public static void viewAllBids(ArrayList<Bid> bidList) { // final view output 
 			C206_CaseStudy.setHeader("Bid LIST");
-			String output = String.format("%-20s %-10s %-30s %-20s %-10.2f","bid_id","item_name","seller_email","buyer_email","bid_price");
+			String output = String.format("%-20s %-10s %-30s %-20s %-10s","bid_id","item_name","seller_email","buyer_email","bid_price");
 			output += retrieveBids(bidList);
 			System.out.println(output);
 		}
 
-		public static void deleteBid(ArrayList<Bid> bidList, String bid_id) { // remove account
+		public static void deleteBid(ArrayList<Bid> bidList, String bid_id) { // remove bid
 			boolean found = false;
 			for (Bid f : bidList) { // loop to find the email if it exist
 				if (f.getBid_id().equalsIgnoreCase(bid_id.strip())) {
