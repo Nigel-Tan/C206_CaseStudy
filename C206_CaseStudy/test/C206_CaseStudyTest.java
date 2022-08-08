@@ -313,7 +313,7 @@ public class C206_CaseStudyTest {
 		assertNotNull(bidList);
 
 		// Test that list is empty
-		String allAccount = C206_CaseStudy.retrieveAccounts(accountList);
+		String allbid = C206_CaseStudy.retrieveBids(bidList);
 		assertEquals(bidList, bidList.size());
 
 		// Given an empty list, after adding 2 accounts, test if the size of the list is
@@ -324,3 +324,4 @@ public class C206_CaseStudyTest {
 
 	
 	}
+}
